@@ -29,3 +29,15 @@ export function mapToRecommendation(item: any, index: number): Recommendation {
         content: item.content
     }
 }
+
+export interface Genre{
+    ID: number;
+    name: string;
+}
+
+export function mapToGenre(item: any, _: number): Genre {
+    return {
+        ID: item.mal_id,
+        name: item.name
+    }
+}

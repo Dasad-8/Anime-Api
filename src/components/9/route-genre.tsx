@@ -1,30 +1,29 @@
 import AnimeSearch from '../6/anime-search';
-import Genre from '../5/genre';
+import Genres from '../5/genres';
 import AnimeInfoLoader from '../3/anime-info-loader';
-import { useState } from 'react';
-import { useEffect } from 'react';
-
+import { useState, useEffect } from 'react';
+import { Anime, Genre, mapToAnime, mapToGenre } from '../12/data';
 
 function RouteGenre() {
 
-    const [genre, setGenre] = useState <any[]> ([]);
-    const [genreList, setGenreList] = useState<any [] | null> (null);
-    const [searchGenre, setSearchGenre] = useState <number> ();
+    const [genreList, setGenreList] = useState <Genre[]> ([]);
+    const [animeList, setAnimeList] = useState<Anime[]> ();
+    const [genreID, setGenreID] = useState <number> ();
 
     async function getResponse3():  Promise<void> {
         const response = await fetch('https://api.jikan.moe/v4/genres/anime');
         let content = await response.json();
-        setGenre(content.data);
+        setGenreList(content.data.map(mapToGenre));
     
         console.log(content);
       };
     
-    async function getResponse4(mal_id: number): Promise<void> {
-        setGenreList([]);
-        const response = await fetch (`https://api.jikan.moe/v4/anime?genres=${mal_id}`);
+    async function getResponse4(ID: number): Promise<void> {
+        setAnimeList([]);
+        const response = await fetch (`https://api.jikan.moe/v4/anime?genres=${ID}`);
         let content = await response.json();
         setTimeout(() => {
-          setGenreList(content.data);
+          setAnimeList(content.data.map(mapToAnime));
         }, 300);
     
         console.log(content)
@@ -35,9 +34,9 @@ function RouteGenre() {
       }, []);
 
     return<>
-        <Genre genreList={genreList} getResponse4={getResponse4} searchGenre={searchGenre} setSearchGenre={setSearchGenre} genre={genre}/>
+        <Genres getResponse4={getResponse4} genreID={genreID} setGenreID={setGenreID} genreList={genreList}/>
         {
-            (genreList === null) ? <></> : (genreList.length === 0) ? <>
+            (animeList === undefined) ? <></> : (animeList.length === 0) ? <>
             <AnimeInfoLoader />
             <AnimeInfoLoader />
             <AnimeInfoLoader />
@@ -48,7 +47,7 @@ function RouteGenre() {
             <AnimeInfoLoader />
             <AnimeInfoLoader />
             </> :<ol className='anime-list-ol'>
-                {(genreList).map((anime: any, index: number) => <li className='anime-list-li' key={index}>
+                {(animeList).map((anime: Anime, index: number) => <li className='anime-list-li' key={index}>
                     <AnimeSearch anime={anime}/>
                 </li>)}
             </ol>

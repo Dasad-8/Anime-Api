@@ -17,7 +17,6 @@ function App() {
         <nav>
             <ol className='nav-ol'>
                 <Link to='/'>Home</Link>
-                <Link to='/catalogue'>Сatalogue</Link>
                 <Link to='/genre'>Genre</Link>
                 <Link to='/tabs'>Tabs</Link>
                 <Link to='/new'>New</Link>
