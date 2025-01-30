@@ -1,0 +1,15 @@
+
+.search{
+    display: flex;
+    align-items: center;
+}
+
+.search-input{
+    margin-left: 10px;
+    margin-right: 15px;
+    padding: 5px;
+} /*!!!!*/
+
+.search-btn{
+    color: rgba(255, 255, 255, 0.87);
+}

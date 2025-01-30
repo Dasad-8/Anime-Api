@@ -1,0 +1,11 @@
+.anime-list-ol{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.anime-list-li{
+    list-style-type: none;
+    margin-bottom: 50px;
+}

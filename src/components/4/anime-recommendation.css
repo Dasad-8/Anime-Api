@@ -1,0 +1,15 @@
+.anime-rec{
+    justify-items: center;
+}
+
+.anime-list-wrap-img{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 670px;
+}
+
+.anime-list-p{
+    width: 500px;
+    margin-top: 20px;
+}

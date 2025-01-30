@@ -1,0 +1,25 @@
+.tabs-h1{
+    font-size: 25px;
+    margin-bottom: 30px;
+};
+
+.tabs-search-p{
+    margin-right: 10px;
+}
+
+.flex-tabs-search{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.tabs-anime-ol{
+    margin-top: 30px;
+    text-align: left;
+}
+
+.tabs-anime-li{
+    margin-bottom: 10px;
+    padding-top: 10px;
+    border-top: 1px solid gray;
+}

@@ -1,0 +1,15 @@
+.genre-tabs-ol{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.genre-tabs-li{
+    list-style: none ;
+    margin-right: 15px;
+    margin-bottom: 20px;
+}
+
+.activ_btn{
+    color: #646cff;
+}
