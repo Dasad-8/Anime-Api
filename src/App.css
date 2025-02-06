@@ -390,11 +390,13 @@ nav{
  /*  justify-content: space-between;  ???*/ 
 }
 
-.nav-ol li{
-  margin-right: 30px;
+.nav-li{
+  margin-right: 15px;
+  color: #fff;
+  text-decoration: none;
 }
 
-.nav-ol li:hover, .nav-ol li:focus, .nav-ol li :active{
+.nav-li:hover, .nav-li:focus, .nav-li :active{
     cursor: pointer;
     color: #646cff;
 }

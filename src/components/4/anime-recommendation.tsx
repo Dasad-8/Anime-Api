@@ -1,10 +1,10 @@
 import './anime-recommendation.css';
 import AnimeInfo from '../3/anime-info';
-import { Recommendation } from '../12/data';
+import { Recommendation, Anime, TabType} from '../12/data';
 
 interface AnimeRecommendationProps{
     recommendation: Recommendation;
-    addTab: (animeName: string) => void;
+    addTab: (anime: Anime, type: TabType) => void;
 }
 
 

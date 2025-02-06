@@ -35,3 +35,12 @@
     width: 20px;
     height: 20px;
 }
+
+.pop-up{
+    position: relative;
+}
+
+.pop-up-content{
+    position: absolute;
+    background-color: #696363;
+}

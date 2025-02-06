@@ -1,8 +1,13 @@
 import './tabs.css';
+import { TabType } from '../12/data';
+import { SetValue } from '../12/data';
 /* import TabsLoader from './tabs-loader'; */
 
+interface TabsProps{
+    setSelectedTab: SetValue<string>;
+}
 
-function Tabs({tabs}: any) {
+function Tabs({setSelectedTab}: TabsProps) {
     
 
 
@@ -16,17 +21,21 @@ function Tabs({tabs}: any) {
         </div>
 
         <ol className='genre-tabs-ol'>
-            <li className='genre-tabs-li'><button>In the process of</button></li>
-            <li className='genre-tabs-li'><button>Revisiting</button></li>
-            <li className='genre-tabs-li'><button>In the plans</button></li>
-            <li className='genre-tabs-li'><button>Postponed</button></li>
-            <li className='genre-tabs-li'><button>Finished</button></li>
-            <li className='genre-tabs-li'><button>Favourite</button></li>
-            <li className='genre-tabs-li'><button>Abandoned</button></li>
-            <li className='genre-tabs-li'><button>Custom</button></li>
-            <li className='genre-tabs-li'><button>All</button></li>
-            <li className='genre-tabs-li'><button>Updates</button></li>
-            <li className='genre-tabs-li'><button>History</button></li>
+            {/* {Object
+                .values(TabType)
+                .map((type: TabType) => type as string)
+                .concat(["All", "Updates", "History"])
+                .map((type: string, _: number) => (
+                <li onClick={()=>setSelectedTab(type)} key={type} className='genre-tabs-li'><button className='tabs-btn'>{type}</button></li>
+            ))} */}
+            {Object
+                .values(TabType)
+                .map((type: string, _: number) => (
+                <li onClick={()=>setSelectedTab(type)} key={type} className='genre-tabs-li'><button className='tabs-btn'>{type}</button></li>
+            ))}
+            <li onClick={()=>setSelectedTab("All")} className='genre-tabs-li'><button className='tabs-btn'>All</button></li>
+            <li onClick={()=>setSelectedTab("Updates")} className='genre-tabs-li'><button className='tabs-btn'>Updates</button></li>
+            <li onClick={()=>setSelectedTab("History")} className='genre-tabs-li'><button className='tabs-btn'>History</button></li>
         </ol>
         
     </>

@@ -1,12 +1,10 @@
 import AnimeRecommendation from '../4/anime-recommendation';
 import AnimeInfoLoader from '../3/anime-info-loader';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Recommendation } from '../12/data';
-import { mapToRecommendation } from '../12/data';
+import { useState, useEffect } from 'react';
+import { Recommendation, TabType, Anime, mapToRecommendation } from '../12/data';
 
 interface RouteHomeProps{
-    addTab: (animeName: string) => void;
+    addTab: (anime: Anime, type: TabType) => void
 };
 
 function RouteHome({addTab} : RouteHomeProps) {

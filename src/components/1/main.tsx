@@ -4,6 +4,8 @@ import RouteGenre from '../9/route-genre';
 import RouteSearch from '../8/route-search';
 import RouteHome from '../7/route-home';
 import RouteTabs from '../11/route-tabs';
+import { Tab, TabType } from '../12/data.ts';
+import { Anime } from '../12/data.ts';
 
 import useLocalStorage from '../hooks/useLocalStorage.ts'
 
@@ -14,15 +16,16 @@ interface MainProps {
 
 function Main({search}: MainProps) {
 
-    const { value: tabs, setValueWithLocalStorage: setTabs } = useLocalStorage<any>("tabs", "./tabs-list-default.json");
+    const { value: tabs, setValueWithLocalStorage: setTabs } = useLocalStorage<Tab[]>("tabs", "./tabs-list-default.json");
 
-    const addTab = (animeName: string) => {
-        let tabData = {
-            animeName: animeName
+    const addTab = (anime: Anime, type: TabType) => {
+        const tabData: Tab = {
+            type,
+            anime, 
+            date: new Date()
         };
-        let newTab = [...tabs];
-        newTab.push(tabData);
-        setTabs(newTab);
+        const newTabs = [...tabs, tabData];
+        setTabs(newTabs);
     }
 
     return <>
@@ -31,7 +34,7 @@ function Main({search}: MainProps) {
 
             <Route path="/search" element={<RouteSearch search={search} />} />
 
-            <Route path='/genre' element={<RouteGenre />} />
+            <Route path='/genre' element={<RouteGenre addTab={addTab}/>} />
 
             <Route path='/tabs' element={<RouteTabs tabs={tabs} />} />
         </Routes>

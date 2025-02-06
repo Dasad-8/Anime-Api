@@ -16,10 +16,10 @@ function App() {
     <section className='wrap'>
         <nav>
             <ol className='nav-ol'>
-                <Link to='/'>Home</Link>
-                <Link to='/genre'>Genre</Link>
-                <Link to='/tabs'>Tabs</Link>
-                <Link to='/new'>New</Link>
+                <Link className='nav-li' to='/'>Home</Link>
+                <Link className='nav-li' to='/genre'>Genre</Link>
+                <Link className='nav-li' to='/tabs'>Tabs</Link>
+                <Link className='nav-li' to='/new'>New</Link>
             </ol>
             <Search setSearch={setSearch}/>
         </nav>

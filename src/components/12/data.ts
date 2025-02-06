@@ -15,7 +15,7 @@ export interface Recommendation {
 
 export function mapToAnime (item: any, _: number): Anime {
     return {
-        title: (item.title_english === null) ? item.title : item.title_english,
+        title: (item.title_english) ? item.title_english : item.title,
         url: item.url,
         content: item.content,
         img: item.images.jpg.large_image_url
@@ -40,4 +40,21 @@ export function mapToGenre(item: any, _: number): Genre {
         ID: item.mal_id,
         name: item.name
     }
+}
+
+export enum TabType {
+    InTheProcessOf = "In the proccess of",
+    Revisiting = "Revisiting",
+    InThePlans = "In the plans",
+    Postponed = "Postponed",
+    Finished = "Finished",
+    Favourite = "Favourite",
+    Abandoned = "Abandoned",
+    Custom = "Custom"
+}
+
+export interface Tab {
+    type: TabType,
+    anime: Anime,
+    date: Date
 }

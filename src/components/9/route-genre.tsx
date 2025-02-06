@@ -1,10 +1,14 @@
-import AnimeSearch from '../6/anime-search';
+import AnimeInfo from '../3/anime-info';
 import Genres from '../5/genres';
 import AnimeInfoLoader from '../3/anime-info-loader';
 import { useState, useEffect } from 'react';
-import { Anime, Genre, mapToAnime, mapToGenre } from '../12/data';
+import { Anime, Genre, mapToAnime, mapToGenre, TabType } from '../12/data';
 
-function RouteGenre() {
+interface RouteGenreProps{
+  addTab: (anime: Anime, type: TabType) => void
+}
+
+function RouteGenre({addTab}: RouteGenreProps) {
 
     const [genreList, setGenreList] = useState <Genre[]> ([]);
     const [animeList, setAnimeList] = useState<Anime[]> ();
@@ -48,7 +52,7 @@ function RouteGenre() {
             <AnimeInfoLoader />
             </> :<ol className='anime-list-ol'>
                 {(animeList).map((anime: Anime, index: number) => <li className='anime-list-li' key={index}>
-                    <AnimeSearch anime={anime}/>
+                    <AnimeInfo animeEntry={anime} addTab={addTab}/>
                 </li>)}
             </ol>
         }

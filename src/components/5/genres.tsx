@@ -18,7 +18,7 @@ function onClickGenre(ID:number) {
     return<>
     {<ol className='genre-tabs-ol'>{genreList.map((genre:Genre, index: number) => (
         <li className='genre-tabs-li' key={index}>
-            <button className={(genreID === genre.ID) ? 'activ_btn' :  ""} onClick={()=>{onClickGenre(genre.ID);}}>{genre.name}</button>
+            <button className={(genreID === genre.ID) ? 'activ_btn' :  "genre-btn"} onClick={()=>{onClickGenre(genre.ID);}}>{genre.name}</button>
         </li>
     ))}</ol>}
     </>
