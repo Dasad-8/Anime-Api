@@ -17,13 +17,13 @@ function RouteTabs({tabs}: RouteTabsProps) {
         <Tabs setSelectedTab={setSelectedTab} searchTabsAnime={searchTabsAnime} setSearchTabsAnime={setSearchTabsAnime}/>
 
         <ol className='tabs-anime-ol'>
-            {(tabs.length > 0) ? 
+            {(tabs.length > 0) ?
             <>{tabs
                 .filter((tab: Tab)=> tab.anime.title.toUpperCase().includes(searchTabsAnime.toUpperCase()) /* === true */)
                 .filter((tab: Tab)=>selectedTab === tab.type || selectedTab === "All")
                 .map((tab: Tab, index: number) => (
                     <li className='tabs-anime-li' key={index}>{tab.anime.title}</li>)
-                )}</> : 
+                )}</>: (tabs != null) ? <><li className='tabs-anime-li' >Please add anime to the list</li></> :
             <>
                 <TabsLoader/>
                 <TabsLoader/>
