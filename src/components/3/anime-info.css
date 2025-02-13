@@ -42,5 +42,14 @@
 
 .pop-up-content{
     position: absolute;
-    background-color: #696363;
+    background-color: #373737;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 130px;
+    cursor: pointer;
+}
+
+.pop-up-p{
+    margin-bottom: 10px;
 }

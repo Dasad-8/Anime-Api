@@ -4,7 +4,8 @@ export interface Anime{
   title: string;
   url: string;
   content: string;
-  img: string
+  img: string;
+  id: number
 }
 
 export interface Recommendation {
@@ -18,7 +19,8 @@ export function mapToAnime (item: any, _: number): Anime {
         title: (item.title_english) ? item.title_english : item.title,
         url: item.url,
         content: item.content,
-        img: item.images.jpg.large_image_url
+        img: item.images.jpg.large_image_url,
+        id: item.mal_id
     };
 }
 

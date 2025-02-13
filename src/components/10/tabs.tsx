@@ -1,22 +1,31 @@
 import './tabs.css';
 import { TabType } from '../12/data';
 import { SetValue } from '../12/data';
+import { useRef} from 'react';
 /* import TabsLoader from './tabs-loader'; */
 
 interface TabsProps{
     setSelectedTab: SetValue<string>;
+    searchTabsAnime: any;
+    setSearchTabsAnime: SetValue<any>
 }
 
-function Tabs({setSelectedTab}: TabsProps) {
+function Tabs({setSelectedTab, searchTabsAnime ,setSearchTabsAnime}: TabsProps) {
     
-
+    const searchTabsAnimeRef = useRef<HTMLInputElement>(null);
+    function onSearchTabsAnime() {
+        if (searchTabsAnimeRef.current !== null) {
+            const refValue = searchTabsAnimeRef.current.value;
+            setSearchTabsAnime(refValue);
+        }
+    }
 
     return <>
         <h1 className='tabs-h1'>Your tabs</h1>
 
         <div className='search flex-tabs-search'>
-                <p className='tabs-search-p'>Search</p>
-                <input  className='search-input' type="text" />
+                <p className='tabs-search-p'>Search {searchTabsAnime}</p>
+                <input onInput={onSearchTabsAnime} ref={searchTabsAnimeRef} className='search-input' type="text" />
                 <button  className='search-btn'>Apply</button>
         </div>
 

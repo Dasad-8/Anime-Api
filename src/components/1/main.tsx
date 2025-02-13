@@ -30,7 +30,7 @@ function Main({search}: MainProps) {
 
     return <>
         <Routes>
-            <Route path="/" element={<RouteHome addTab={addTab} />} />
+            <Route path="/" element={<RouteHome addTab={addTab} tabs={tabs}/>} />
 
             <Route path="/search" element={<RouteSearch search={search} />} />
 

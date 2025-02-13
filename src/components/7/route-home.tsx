@@ -1,13 +1,14 @@
 import AnimeRecommendation from '../4/anime-recommendation';
 import AnimeInfoLoader from '../3/anime-info-loader';
 import { useState, useEffect } from 'react';
-import { Recommendation, TabType, Anime, mapToRecommendation } from '../12/data';
+import { Recommendation, TabType, Anime, mapToRecommendation, Tab } from '../12/data';
 
 interface RouteHomeProps{
-    addTab: (anime: Anime, type: TabType) => void
+    addTab: (anime: Anime, type: TabType) => void;
+    tabs: Tab[];
 };
 
-function RouteHome({addTab} : RouteHomeProps) {
+function RouteHome({addTab, tabs} : RouteHomeProps) {
     
     let [recommendationList, setRecommendationList] = useState<Recommendation[]> ([]);
 
@@ -27,7 +28,7 @@ function RouteHome({addTab} : RouteHomeProps) {
         <ol className='anime-list-ol'>{(recommendationList.length > 0) ? <>
             {recommendationList.map((recommendation: any, index: number) => (
                 <li className='anime-list-li' key={index}>
-                    <AnimeRecommendation recommendation={recommendation} addTab={addTab}/>
+                    <AnimeRecommendation recommendation={recommendation} addTab={addTab} tabs={tabs}/>
                 </li>))}
             </> : <>
             <AnimeInfoLoader />
