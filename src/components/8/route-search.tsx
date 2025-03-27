@@ -1,15 +1,17 @@
-import AnimeSearch from "../6/anime-search";
 import AnimeInfoLoader from "../3/anime-info-loader";
-import { Anime } from "../12/data";
+import { Anime, Tab, TabType } from "../12/data";
 import { useEffect, useState } from "react";
 import { mapToAnime } from "../12/data";
+import AnimeInfo from "../3/anime-info";
 
 
 interface RouteSearchProps {
     search: string;
+    tabs: Tab[];
+    addTab: (anime: Anime, type: TabType) => void;
 }
 
-function RouteSearch({ search }: RouteSearchProps) {
+function RouteSearch({ search, tabs, addTab}: RouteSearchProps) {
 
     let [searchApi, setSearchApi] = useState<Anime[]>([]);
 
@@ -35,9 +37,9 @@ function RouteSearch({ search }: RouteSearchProps) {
             <AnimeInfoLoader />
             <AnimeInfoLoader />
         </> : <ol className='anime-list-ol'>
-            {searchApi.map((anime: any, index: number) => (
+            {searchApi.map((anime: Anime, index: number) => (
                 <li className='anime-list-li' key={index}>
-                    <AnimeSearch anime={anime} />
+                    <AnimeInfo addTab={addTab} tabs={tabs} animeEntry={anime} />
                 </li>))}
         </ol>}
     </>

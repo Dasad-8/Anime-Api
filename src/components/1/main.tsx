@@ -6,8 +6,11 @@ import RouteHome from '../7/route-home';
 import RouteTabs from '../11/route-tabs';
 import { Tab, TabType } from '../12/data.ts';
 import { Anime } from '../12/data.ts';
+import RouteNews from '../13/route-news.tsx';
 
 import useLocalStorage from '../hooks/useLocalStorage.ts'
+
+import { v4 as uuidv4 } from 'uuid';
 
 
 interface MainProps {
@@ -22,7 +25,8 @@ function Main({search}: MainProps) {
         const tabData: Tab = {
             type,
             anime, 
-            date: new Date()
+            date: new Date(),
+            UUId: uuidv4()
         };
         const newTabs = [...tabs, tabData];
         setTabs(newTabs);
@@ -32,11 +36,13 @@ function Main({search}: MainProps) {
         <Routes>
             <Route path="/" element={<RouteHome addTab={addTab} tabs={tabs}/>} />
 
-            <Route path="/search" element={<RouteSearch search={search} />} />
+            <Route path="/search" element={<RouteSearch search={search} tabs={tabs} addTab={addTab}/>} />
 
-            <Route path='/genre' element={<RouteGenre addTab={addTab}/>} />
+            <Route path='/genre' element={<RouteGenre tabs={tabs} addTab={addTab}/>} />
 
-            <Route path='/tabs' element={<RouteTabs tabs={tabs} />} />
+            <Route path='/tabs' element={<RouteTabs tabs={tabs} setTabs={setTabs}/>} />
+
+            <Route path='/new' element={<RouteNews tabs={tabs} setTabs={setTabs}/>} />
         </Routes>
     </>
 }

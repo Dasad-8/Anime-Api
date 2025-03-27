@@ -58,5 +58,6 @@ export enum TabType {
 export interface Tab {
     type: TabType,
     anime: Anime,
-    date: Date
+    date: Date,
+    UUId: string
 }

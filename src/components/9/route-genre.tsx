@@ -2,13 +2,14 @@ import AnimeInfo from '../3/anime-info';
 import Genres from '../5/genres';
 import AnimeInfoLoader from '../3/anime-info-loader';
 import { useState, useEffect } from 'react';
-import { Anime, Genre, mapToAnime, mapToGenre, TabType } from '../12/data';
+import { Anime, Genre, mapToAnime, mapToGenre, Tab, TabType } from '../12/data';
 
 interface RouteGenreProps{
-  addTab: (anime: Anime, type: TabType) => void
+  addTab: (anime: Anime, type: TabType) => void;
+  tabs: Tab[];
 }
 
-function RouteGenre({addTab}: RouteGenreProps) {
+function RouteGenre({addTab, tabs}: RouteGenreProps) {
 
     const [genreList, setGenreList] = useState <Genre[]> ([]);
     const [animeList, setAnimeList] = useState<Anime[]> ();
@@ -52,7 +53,7 @@ function RouteGenre({addTab}: RouteGenreProps) {
             <AnimeInfoLoader />
             </> :<ol className='anime-list-ol'>
                 {(animeList).map((anime: Anime, index: number) => <li className='anime-list-li' key={index}>
-                    <AnimeInfo animeEntry={anime} addTab={addTab}/>
+                    <AnimeInfo tabs={tabs} animeEntry={anime} addTab={addTab}/>
                 </li>)}
             </ol>
         }

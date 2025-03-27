@@ -19,11 +19,15 @@
 }
 
 .tabs-anime-li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 10px;
     padding-top: 10px;
     border-top: 1px solid gray;
 }
 
 .tabs-btn{
-    color: #fff
+    color: #fff;
+    justify-self: end;
 }
