@@ -3,6 +3,8 @@ import Tabs from '../10/tabs';
 import TabsLoader from '../10/tabs-loader';
 import { SetValue, Tab, TabType } from '../12/data';
 import TabInfo from '../14/tab-info';
+import Updates from '../15/updates';
+import History from '../16/history';
 
 interface RouteTabsProps{
     tabs: Tab[];
@@ -24,7 +26,7 @@ function RouteTabs({tabs, setTabs}: RouteTabsProps) {
         let newTabs = [...tabs];
         setTabs(newTabs.map((tab: Tab)=>{
             if (tab.UUId === UUId) {
-                return {...tab, type: newTab}
+                return {...tab, type: newTab, date: new Date()}
             }else {
                 return tab
             }
@@ -35,7 +37,8 @@ function RouteTabs({tabs, setTabs}: RouteTabsProps) {
         <Tabs setSelectedTab={setSelectedTab} searchTabsAnime={searchTabsAnime} setSearchTabsAnime={setSearchTabsAnime}/>
 
         {<ol className='tabs-anime-ol'>
-            {(tabs.length > 0) ?
+            {(selectedTab === "Updates") ? <Updates  tabs={tabs}/> :(selectedTab === "History") ? <History  tabs={tabs}/> :
+            (tabs.length > 0) ?
             <>{tabs
                 .filter((tab: Tab)=> tab.anime.title.toUpperCase().includes(searchTabsAnime.toUpperCase()) /* === true */)
                 .filter((tab: Tab)=>selectedTab === tab.type || selectedTab === "All")

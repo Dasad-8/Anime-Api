@@ -59,5 +59,6 @@ export interface Tab {
     type: TabType,
     anime: Anime,
     date: Date,
-    UUId: string
+    UUId: string,
+    
 }

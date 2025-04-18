@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import './route-news.css';
+import { useState, useEffect, SyntheticEvent } from "react";
 import { SetValue, Tab } from "../12/data";
+import RouteNewsLoader from './route-news-loader';
 
 
 
@@ -33,16 +35,30 @@ function RouteNews({tabs, setTabs}: RouteNews) {
         getResponse();
     }, []);
     
+    function placeholder(e : SyntheticEvent<HTMLImageElement, Event>) {
+        const img = e.target as HTMLImageElement;
+        
+        img.src = './img/images.svg'
+        img.style.objectFit = 'contain'
+    }
 
     return<>
-        <h1>News</h1>
+        <h1 className="news-h1">News</h1>
         <ol>{newsList.toSorted((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((news:any, index:number)=>(
-            <li key={index}>
-                <h2><a href={news.forum_url}>{news.title}</a></h2>
-                <p>{news.excerpt}</p>
-                <p>{news.author_username}</p>
-                <img src={news.images.jpg.image_url} alt="error" />
-                <p>{news.date}</p>
+            <li className='news-list' key={index}>
+                <div className='flex-container'>
+                    <h2 className='news-link'><a href={news.forum_url}>{news.title}</a></h2>
+                    <p className='news-p'>{news.excerpt}</p>
+                    <p className='news-p news-author'>{news.author_username}</p>
+                    <p className='news-p'>{news.date}</p>
+                </div>
+                {/* <img className='news-img' src={news.images.jpg.image_url} alt="error" /> */}
+
+                {news.images.jpg.image_url == null || news.images.jpg.image_url == undefined || news.images.jpg.image_url.length === 0 ? (
+                    <RouteNewsLoader />
+                ) : (
+                <img className='news-img' src={news.images.jpg.image_url} alt="error" onError={placeholder}/>
+                )}
             </li>
         ))}</ol>
     </>

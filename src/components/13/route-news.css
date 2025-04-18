@@ -1,0 +1,48 @@
+.news-h1{
+    font-size: 45px;
+    margin-bottom: 30px;
+}
+
+.news-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    border-top: 1px solid gray;
+}
+
+.news-link{
+    margin-bottom: 20px;
+}
+
+.news-link a{
+    font-size: 25px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.news-p{
+    margin-bottom: 15px;
+    width: 630px;
+}
+
+.news-author{
+    font-size: 20px;
+    margin-top: 80px;
+    margin-bottom: 15px;
+}
+
+.news-img{
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-right: 100px;
+}
+
+.flex-container{
+    margin-left: 200px;
+}

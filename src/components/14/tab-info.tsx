@@ -23,8 +23,12 @@ function TabInfo({tab, deleteTab, moveTab}: TabInfoProps) {
                 ))}
             </div>
         </div>
-        <li className='tabs-anime-li'>{tab.anime.title} <button onClick={()=>deleteTab(tab.UUId)} className='tabs-btn'><img src="./img/trash3.svg" alt="error" /></button>
-        <button onClick={() => setActivPopUp(true)}></button></li>
+        <li className='tabs-anime-li'>{tab.anime.title} 
+            <div>
+                <button onClick={()=>deleteTab(tab.UUId)} className='tabs-btn'><img src="./img/trash3.svg" alt="error" /></button>
+                <button onClick={() => setActivPopUp(true)}><img src="./img/pencil-square.svg" alt="error" /></button>
+            </div>
+        </li>
     </>
 }
 

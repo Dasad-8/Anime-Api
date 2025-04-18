@@ -36,7 +36,7 @@ function AnimeInfo({animeEntry, addTab, tabs}: AnimeInfoProps) {
             <button onClick={()=>setActivPopUp(true)} /*  */ className='anime-list-btn'><img className='anime-list-btn-img' src={(isLiked()) ? "./img/heart-fill.svg" :"./img/1077035.png"} alt="error" /></button>
 
             <div className='pop-up' style={{display: (activPopUp === true) ? 'block' : 'none'}}>
-                <div className='pop-up-content'>
+                <div className='pop-up-content' onMouseLeave={()=>{closingPopUp()}}>
                     {Object.values(TabType).map((type: string, index: number) => (
                         <p className='pop-up-p' onClick={()=> {addTab(animeEntry, type as TabType); closingPopUp()}} key={type}>{type}</p>
                     ))}
