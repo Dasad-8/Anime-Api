@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SetValue } from "../../App";
+import { SetValue } from "../12/data";
 
 function useLocalStorage <L> (key:string, defaultSrc:string): {value: L, setValueWithLocalStorage: SetValue <L>, loading: boolean} {
 
