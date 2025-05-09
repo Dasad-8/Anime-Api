@@ -17,21 +17,17 @@ function RouteGenre({addTab, tabs}: RouteGenreProps) {
 
     async function getResponse3():  Promise<void> {
         const response = await fetch('https://api.jikan.moe/v4/genres/anime');
-        let content = await response.json();
+        const content = await response.json();
         setGenreList(content.data.map(mapToGenre));
-    
-        console.log(content);
       };
     
     async function getResponse4(ID: number): Promise<void> {
         setAnimeList([]);
         const response = await fetch (`https://api.jikan.moe/v4/anime?genres=${ID}`);
-        let content = await response.json();
+        const content = await response.json();
         setTimeout(() => {
           setAnimeList(content.data.map(mapToAnime));
         }, 300);
-    
-        console.log(content)
       };
 
       useEffect(()=>{

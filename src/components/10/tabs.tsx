@@ -6,8 +6,8 @@ import { useRef} from 'react';
 
 interface TabsProps{
     setSelectedTab: SetValue<string>;
-    searchTabsAnime: any;
-    setSearchTabsAnime: SetValue<any>
+    searchTabsAnime: string;
+    setSearchTabsAnime: SetValue<string>
 }
 
 function Tabs({setSelectedTab, searchTabsAnime ,setSearchTabsAnime}: TabsProps) {
@@ -39,7 +39,7 @@ function Tabs({setSelectedTab, searchTabsAnime ,setSearchTabsAnime}: TabsProps) 
             ))} */}
             {Object
                 .values(TabType)
-                .map((type: string, _: number) => (
+                .map((type: string) => (
                 <li onClick={()=>setSelectedTab(type)} key={type} className='genre-tabs-li'><button className='tabs-btn'>{type}</button></li>
             ))}
             <li onClick={()=>setSelectedTab("All")} className='genre-tabs-li'><button className='tabs-btn'>All</button></li>

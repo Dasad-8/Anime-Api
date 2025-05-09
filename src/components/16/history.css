@@ -1,0 +1,10 @@
+.history-title{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 450px;
+}
+
+.history-tab-type{
+    width: 130px;
+}

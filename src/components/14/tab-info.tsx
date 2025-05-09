@@ -18,7 +18,7 @@ function TabInfo({tab, deleteTab, moveTab}: TabInfoProps) {
     return<>
         <div className='pop-up' style={{display: (activPopUp === true) ? 'block' : 'none'}}>
             <div className='pop-up-content'>
-                {Object.values(TabType).map((type: string, index: number) => (
+                {Object.values(TabType).map((type: string) => (
                     <p className='pop-up-p' onClick={()=> {moveTab(tab.UUId, type as TabType); closingPopUp()}} key={type}>{type}</p>
                 ))}
             </div>

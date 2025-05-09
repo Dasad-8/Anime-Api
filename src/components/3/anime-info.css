@@ -15,6 +15,10 @@
     font-size: 18px;
     margin-top: 10px;
     margin-bottom: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 255px;
 }
 
 .anime-list-a{

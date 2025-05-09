@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 interface SearchProps{
-    setSearch: SetValue<any>;
+    setSearch: SetValue<string>;
 }
 
 function Search({setSearch} : SearchProps) {

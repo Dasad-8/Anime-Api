@@ -6,7 +6,7 @@ import {Link } from 'react-router-dom';
 
 function App() {
 
-  const [search, setSearch] = useState <any> ("");
+  const [search, setSearch] = useState ("");
 
 
 

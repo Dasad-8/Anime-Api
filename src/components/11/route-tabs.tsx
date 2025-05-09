@@ -18,12 +18,12 @@ function RouteTabs({tabs, setTabs}: RouteTabsProps) {
     const [searchTabsAnime, setSearchTabsAnime] = useState <string> ("");
 
     function deleteTab(UUId: string) {
-        let newTabs = [...tabs];
+        const newTabs = [...tabs];
         setTabs(newTabs.filter((tab :Tab) => tab.UUId !== UUId));
     };
 
     function moveTab(UUId: string, newTab: TabType) { //
-        let newTabs = [...tabs];
+        const newTabs = [...tabs];
         setTabs(newTabs.map((tab: Tab)=>{
             if (tab.UUId === UUId) {
                 return {...tab, type: newTab, date: new Date()}

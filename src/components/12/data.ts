@@ -13,8 +13,8 @@ export interface Recommendation {
     anime2: Anime;
     content: string;
 }
-
-export function mapToAnime (item: any, _: number): Anime {
+// eslint-disable-next-line
+export function mapToAnime (item: any): Anime {
     return {
         title: (item.title_english) ? item.title_english : item.title,
         url: item.url,
@@ -24,10 +24,11 @@ export function mapToAnime (item: any, _: number): Anime {
     };
 }
 
-export function mapToRecommendation(item: any, index: number): Recommendation {
+// eslint-disable-next-line
+export function mapToRecommendation(item: any): Recommendation {
     return {
-        anime1: mapToAnime(item.entry[0], index),
-        anime2: mapToAnime(item.entry[1], index),
+        anime1: mapToAnime(item.entry[0]),
+        anime2: mapToAnime(item.entry[1]),
         content: item.content
     }
 }
@@ -37,7 +38,20 @@ export interface Genre{
     name: string;
 }
 
-export function mapToGenre(item: any, _: number): Genre {
+/* interface GenreResponse {
+    mal_id: number;
+    name: string;
+} */
+
+/* export function mapToGenre(item: GenreResponse): Genre {
+    return {
+        ID: item.mal_id,
+        name: item.name
+    }
+} */
+
+// eslint-disable-next-line
+export function mapToGenre(item: any): Genre {
     return {
         ID: item.mal_id,
         name: item.name
@@ -61,4 +75,25 @@ export interface Tab {
     date: Date,
     UUId: string,
     
+}
+
+export interface Update {
+    anime: string;
+    title: string;
+    aired: Date;
+    score: number;
+}
+
+export interface News{
+    title: string;
+    date: Date;
+    author_username: string;
+    excerpt: string;
+    forum_url: string;
+    mal_id: number;
+    images: {
+        jpg: {
+            image_url: string;
+        }
+    }
 }

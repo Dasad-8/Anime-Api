@@ -42,7 +42,7 @@ function Main({search}: MainProps) {
 
             <Route path='/tabs' element={<RouteTabs tabs={tabs} setTabs={setTabs}/>} />
 
-            <Route path='/new' element={<RouteNews tabs={tabs} setTabs={setTabs}/>} />
+            <Route path='/new' element={<RouteNews tabs={tabs}/>} />
         </Routes>
     </>
 }

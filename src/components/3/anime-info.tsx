@@ -18,7 +18,7 @@ function AnimeInfo({animeEntry, addTab, tabs}: AnimeInfoProps) {
 
     function isLiked(): boolean {
        for (let i = 0; i < tabs.length; i++){
-            let tab = tabs[i]
+            const tab = tabs[i]
             if (tab.anime.id === animeEntry.id) {
                 return true
             }
@@ -37,7 +37,7 @@ function AnimeInfo({animeEntry, addTab, tabs}: AnimeInfoProps) {
 
             <div className='pop-up' style={{display: (activPopUp === true) ? 'block' : 'none'}}>
                 <div className='pop-up-content' onMouseLeave={()=>{closingPopUp()}}>
-                    {Object.values(TabType).map((type: string, index: number) => (
+                    {Object.values(TabType).map((type: string) => (
                         <p className='pop-up-p' onClick={()=> {addTab(animeEntry, type as TabType); closingPopUp()}} key={type}>{type}</p>
                     ))}
                 </div>
